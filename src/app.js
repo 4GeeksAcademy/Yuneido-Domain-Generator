@@ -5,10 +5,14 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-let pronoun = ["random", "their", "The", "his", "our"];
-let adj = ["small", "cute", "massive", "fast", "lovely"];
-let noun = ["guitar", "rocket", "Kangaroo", "robot", "castle"];
-let extensions = [".com", ".net", ".org", ".io", ".dev"];
+/* De acuerdo con los lineamientos de programación "Las variables constantes se nombran en LETRAS MAYÚSCULAS." 
+Una variable constante es un valor fijo que no cambia durante la ejecución del programa. 
+En este caso, tanto el pronoun, adj, noun y extensions, son constantes porque su valor ya esta definido */
+
+const PRONOUN = ["random", "their", "The", "his", "our"];
+const ADJ = ["small", "cute", "massive", "fast", "lovely"];
+const NOUN = ["guitar", "rocket", "Kangaroo", "robot", "castle"];
+const EXTENSIONS = [".com", ".net", ".org", ".io", ".dev"];
 
 window.onload = function() {
   //write your code here
@@ -19,7 +23,9 @@ window.onload = function() {
   Fuente - Wikipedia
  */
 
-  function domainGenerator(...arrays) {
+  /*El nombre de una función debe describir claramente y brevemente el motivo de usar la función. 
+  Si pensamos en un codigo de programación más extenso, es mejor especificar más la función */
+  function generateDomainCombinations(...arrays) {
     return arrays
       .reduce(
         (acc, currentArray) => {
@@ -36,7 +42,7 @@ window.onload = function() {
       .map(value => value.join(""));
   }
 
-  let domains = domainGenerator(pronoun, adj, noun, extensions);
+  let domains = generateDomainCombinations(PRONOUN, ADJ, NOUN, EXTENSIONS);
   const list = document.getElementById("domainList");
   list.innerHTML = domains
     .map(dominio => {
